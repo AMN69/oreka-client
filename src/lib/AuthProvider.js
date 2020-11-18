@@ -42,10 +42,10 @@ class AuthProvider extends Component {
   }
 
   signup = (user) => {
-    const { username, password } = user;
+    const { email, password, username, usersurname, age, userImgUrl } = user;
     // lamamos a auth.signup que se conecta con la ruta del backend
     auth
-      .signup({ username, password })
+      .signup({ email, password, username, usersurname, age, userImgUrl })
       .then((user) => this.setState({ isLoggedin: true, user }))
       .catch(({ error }) =>
         this.setState({ message: error.data.statusMessage })
@@ -53,10 +53,10 @@ class AuthProvider extends Component {
   };
 
   login = async (user) => {
-    const { username, password } = user;
+    const { email, password } = user;
 
     try {
-      const user = await auth.login({ username, password });
+      const user = await auth.login({ email, password });
       this.setState({ isLoggedin: true, user });
     } catch (error) {
       console.log(error);
@@ -77,7 +77,7 @@ class AuthProvider extends Component {
     const { login, logout, signup } = this;
 
     return isLoading ? (
-      <div>Loading</div>
+      <div>Loading...</div>
     ) : (
       /* dentro del value del provider tendremos datos que estarán disponibles para todos los componentes <Consumer> */
       <Provider value={{ isLoggedin, user, login, logout, signup }}>
