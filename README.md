@@ -23,6 +23,7 @@ The next features to add to the tool will be a weekly/daily planner, financial y
 - Financial: plan vs real.
 - Financial: to have yearly views rendering all months and year-totals by incomes/expenses
 - Financial: to have a wealth area with you assets: real state, cars, etc...
+- Financial: to facilitate to the user by color detecting months without agenda.
 - Other (non-financial): yearly view, weekly view.
 - Other: deadlines for tasks.
 - Other (non-financial): email warnings when deadline is close or overdue.
@@ -119,7 +120,7 @@ agenda={
 			incomeDesc: String,
 			incomeAmount: Number
 			}	  
-	  ]
+	  ],
 	  [
 	  {
 			expenseDesc: String,
@@ -210,7 +211,7 @@ agenda={
     - incomeAmount <> 0 and incomeDesc empty (434) and message: "Income can't be 0."
     - expenseAmount <> 0 and expenseDesc empty (435) "Expense can't be 0".
   - updated agenda object and message: "Your month has been updated.".
-- PUT /usermodify/:id
+- PUT /usermodify
   - body:
     - password
     - name
