@@ -6,6 +6,7 @@ class Private extends Component {
     return (
       <div>
         <h1>Welcome {this.props.user.username}</h1>
+        <img href={this.props.user.userImgUrl} alt="user photo"/>
       </div>
     );
   }

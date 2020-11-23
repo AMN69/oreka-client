@@ -37,7 +37,66 @@ class Auth {
     return this.auth.get("/auth/me").then(({ data }) => data);
     // return this.auth.get("/auth/me").then((response) => response.data);
   }
-}
+
+  // From dashboard.js will come here to look for an agenda month with the data (formYear, formMonth)
+  // this data must be taken and pass to the backend (in this case by query)
+  // the backend returns an agenda sheet on agenda
+
+  dashboardGet({formYear, formMonth}) {
+    const getRoute = "/agenda-routes/agenda?year=" + formYear + "&month=" + formMonth;
+
+    return this.auth
+      .get(getRoute)
+      .then(({agenda}) => agenda);
+  }
+
+  // From userprofile.js will come here to modify the agenda month with the data (userId and formUsername, formUsersurname, formAge, formUserImgUrl)
+  // this data must be taken and pass to the backend (in this case by id and body)
+  // the backend returns a message on message
+
+  userprofile({userId, formUsername, formUsersurname, formAge, formUserImgUrl }) {
+    const putRoute = "/agenda-routes/usermodify/" + userId;
+
+    return this.auth
+      .put(putRoute, { formUsername, formUsersurname, formAge, formUserImgUrl })
+      .then(({message}) => message);
+  }
+
+  // From dashboard.js will come here to create a new sheet in the agenda with the data (userId and the complete agenda)
+  // this data must be taken and pass to the backend (in this case by id and body)
+  // the backend returns a message on message
+
+  dashboardPost({ userId, agenda }) {
+    const postRoute = "/agenda-routes/agendacreate/" + userId;
+
+    return this.auth
+      .post(postRoute, { agenda })
+      .then(({message}) => message);
+  }
+
+  // From dashboard.js
+
+  dashboardPut({ userId, agenda }) {
+    const putRoute = "/agenda-routes/agendamodify/" + userId;
+
+    return this.auth
+      .put(putRoute, { agenda })
+      .then(({message}) => message);
+  }
+
+  //[AMN-start] This is a service that receives the file with the user photo and sends it to the backend to upload in cloudinary.
+  handleUpload = async (theFile) => {
+    console.log("file in service: ", theFile);
+
+    try {
+      const res = await this.auth.post("/agenda-routes/upload", theFile);
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  //[AMN-end]
+} 
 
 const axiosRequestFunctions = new Auth();
 
