@@ -29,3 +29,18 @@ button.navbar-button {
   color: white;
   text-decoration: none;
 }
+
+.login-div{
+  display:flex;
+  flex-direction: column;
+}
+
+.h1-centered {
+  text-align: center;
+}
+
+.h1-centered > form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
