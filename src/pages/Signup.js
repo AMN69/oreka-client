@@ -11,18 +11,6 @@ class Signup extends Component {
             username: "", 
             usersurname: "", 
             age: 0};
-            // age: 0, 
-            // userImgUrl: "" };
-
-  // handleFormSubmit = event => {
-  //   event.preventDefault();
-  //   const { email, password, username, usersurname, age } = this.state;
-  //   console.log("State before singup:", this.state );
-  //   console.log("user url: ", userImgUrl);
-  //   //console.log('Signup -> form submit', { username, password });
-  //   // console.log("Cloudinaryurl: ", cloudinaryUrl);
-  //   this.props.signup({ email, password, username, usersurname, age, userImgUrl });
-  // };
 
   handleFormSubmit = async (event) => {
     event.preventDefault();
@@ -45,26 +33,8 @@ class Signup extends Component {
     } catch (error) {
         console.log("Error while creating the user: ", error);
     }
+    return;
   };
-
-  // handleSubmit = async (e) => {
-  //   e.preventDefault();
-
-  //   try {
-  //     const res = await service.saveNewMovie(this.state);
-  //     console.log("added", res);
-
-  //     this.setState({
-  //       title: "",
-  //       description: "",
-  //       imageUrl: ""
-  //     });
-
-  //     this.props.getMovies()
-  //   } catch (error) {
-  //       console.log("Error while adding the movie: ", error);
-  //   }
-  // };
 
   handleChange = event => {
     const { name, value } = event.target;
