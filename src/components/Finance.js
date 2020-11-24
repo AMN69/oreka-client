@@ -1,9 +1,9 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import React, { useState } from "react";
 
-function FormFinance() {
+
+function Finance(agenda) {
   //cambiar valores a finance!
   const [finance, setFinance] = useState({
     habit1: "",
@@ -12,11 +12,15 @@ function FormFinance() {
     habit4: ""
   });
 
+  useEffect(() => {
+    setFinance(agenda.finance)
+  }, [agenda.finance]);
+
   function handleChange(event) {
     const newValue = event.target.value;
     const inputFinance = event.target.name;
 //cambiar valores a finance!!!
-    setHabits((prevValue) => {
+    setFinance((prevValue) => {
       if (inputFinance === "habit1") {
         return {
           habit1: newValue,
@@ -254,4 +258,5 @@ function FormFinance() {
   );
 }
 
-export default FormFinance;
+export default Finance;
+

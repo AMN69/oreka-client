@@ -1,10 +1,12 @@
-import React, { Component } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import React, { useState } from "react";
+import services from "../lib/auth-service";
 
 
-function FormCheck() {
+
+
+function Habits (agenda) {
   const [habits, setHabits] = useState([
     {
       habitToDoDesc: "",
@@ -24,11 +26,19 @@ function FormCheck() {
     }
   ]);
 
-  /* habits: [{
-    habitToDoDesc: String,
-    habitDoneTick: Boolean
-}],
-*/
+
+/*  useEffect(() => {
+    setHabits(agenda.habits)
+  }); 
+  */
+
+
+
+useEffect(() => {
+  setHabits(agenda.habits)
+}, [agenda.habits]);
+
+
   function handleChange(event, index) {
     const { name, value } = event.target;
 
@@ -54,6 +64,21 @@ function FormCheck() {
       console.log(habits);
     }
   }
+
+    function handleFormUpdate (event) {
+      event.preventDefault();
+      console.log("I'm in handleFormUpdate");
+      let agenId = this.props.agenda._id;
+      agenda.reward = "It's been updated succesfully three times."
+      console.log("agenda in handleFormUpdate before update: ", agenda);
+      console.log("agenda reward: ", agenda.reward);
+      const response = services.updateagen({agenId, habits});
+      console.log("after update response is: ", response);
+      // services.updateagen({ agendaId: res._id, agenda: this.agenda });
+    };
+    // const { agenda } = this.props.agenda;
+    console.log("I'm in FormCheck children");
+    console.log("with agenda: ", agenda);
 
   return (
     <div className="container">
@@ -82,9 +107,12 @@ function FormCheck() {
               />
             </div>
           ))}
+            <button onClick={handleFormUpdate}>
+            <span>UPDATE HABITS</span>
+          </button>
       </form>
     </div>
   );
 }
 
-export default FormCheck;
+export default Habits;
