@@ -8,13 +8,15 @@ const withAuth = (WrappedComponent) => {
     render() {
       return (
         <Consumer>
-          {({ login, signup, user, logout, isLoggedin }) => {
+          {({ login, signup, user, logout, creagen, getagen, isLoggedin }) => {
             return (
               <WrappedComponent
                 login={login}
                 signup={signup}
                 user={user}
                 logout={logout}
+                creagen={creagen}
+                getagen={getagen}
                 isLoggedin={isLoggedin}
                 {...this.props}
               />
@@ -72,15 +74,39 @@ class AuthProvider extends Component {
     }
   };
 
+  creagen = (datagen) => {
+    const { month, year, userId } = datagen;
+    // lamamos a auth.creagen que se conecta con la ruta del backend
+    auth
+      .creagen({ month, year, userId })
+      .catch(({ error }) =>
+        this.setState({ message: error.data.statusMessage })
+      );
+  };
+
+  getagen = (datagen) => {
+    console.log("I'm within getagen on AuthProvider")
+    const { year, month, userId } = datagen;
+    // lamamos a auth.getagen que se conecta con la ruta del backend
+    auth
+      .getagen({ month, year, userId })
+      .then(({ agenda }) => 
+        {console.log("I'm back within getagen on AuthProvider", agenda)
+        return agenda})
+      .catch(({ error }) =>
+        this.setState({ message: error.data.statusMessage })
+      );
+  };
+
   render() {
     const { isLoading, isLoggedin, user } = this.state;
-    const { login, logout, signup } = this;
+    const { login, logout, signup, creagen, getagen } = this;
 
     return isLoading ? (
       <div>Loading...</div>
     ) : (
       /* dentro del value del provider tendremos datos que estarán disponibles para todos los componentes <Consumer> */
-      <Provider value={{ isLoggedin, user, login, logout, signup }}>
+      <Provider value={{ isLoggedin, user, login, logout, creagen, getagen, signup }}>
         {this.props.children}
       </Provider>
     );

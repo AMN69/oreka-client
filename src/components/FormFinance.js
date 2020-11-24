@@ -1,7 +1,7 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import React, { useState } from "react";
+
 
 function FormFinance() {
   //cambiar valores a finance!
@@ -15,8 +15,8 @@ function FormFinance() {
   function handleChange(event) {
     const newValue = event.target.value;
     const inputFinance = event.target.name;
-//cambiar valores a finance!!!
-    setHabits((prevValue) => {
+    //cambiar valores a finance!!!
+    setFinance((prevValue) => {
       if (inputFinance === "habit1") {
         return {
           habit1: newValue,

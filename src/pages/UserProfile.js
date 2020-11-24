@@ -46,22 +46,28 @@ class UserProfile extends Component {
                         value={this.state.username}
                         onChange={e => this.handleChange(e)}
                         />
+                        <br/>
                         <label>Surname:</label>
                         <textarea
                         name="surname"
                         value={this.state.usersurname}
                         onChange={e => this.handleChange(e)}
                         />
+                        <br/>
+                        <label>Age:</label>
                         <textarea
                         name="age"
                         value={this.state.age}
                         onChange={e => this.handleChange(e)}
                         />
+                        <br/>
+                        <label>Photo</label>
                         <img
                         name="image"
                         value={this.state.userImgUrl}
                         onChange={e => this.handleChange(e)}
                         />
+                        <br/>
                         <textarea
                         name="month"
                         value={this.state.month}
@@ -72,6 +78,7 @@ class UserProfile extends Component {
                         value={this.state.year}
                         onChange={e => this.handleChange(e)}
                         />
+                        <br/>
                         revisar financial balance y Goals accomplished
                         <textarea
                         name="Financial Balance"
@@ -88,11 +95,7 @@ class UserProfile extends Component {
                     </form>
                 </div>
         )
-
-
-
     }
 }
-
 
 export default UserProfile;

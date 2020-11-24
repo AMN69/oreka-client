@@ -46,33 +46,33 @@ class Navbar extends Component {
             <button className='navbar-button' onClick={logout}>Logout</button> */}
 
 
-            <div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="dropdown">
+              <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Menu
               </a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <Link to='/dashboard'>
-                  <a class="dropdown-item">Dashboard</a>
+                  <a className="dropdown-item">Dashboard</a>
                 </Link>
                 <Link to='/userprofile'>
-                  <a class="dropdown-item">User profile</a>
+                  <a className="dropdown-item">User profile</a>
                 </Link>
-                <a class="dropdown-item" onClick={logout}>Logout</a>
+                <a className="dropdown-item" onClick={logout}>Logout</a>
               </div>
             </div>
           </>
         ) : (
           <>
-            <div class="dropdown">
-              <a class="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <div className="dropdown">
+              <a className="btn btn-secondary dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 Menu
               </a>
-              <div class="dropdown-menu" aria-labelledby="dropdownMenuLink">
+              <div className="dropdown-menu" aria-labelledby="dropdownMenuLink">
                 <Link to='/login'>
-                  <a class="dropdown-item">Login</a>
+                  <a className="dropdown-item">Login</a>
                 </Link>
                 <Link to='/signup'>
-                  <a class="dropdown-item">Sign Up</a>
+                  <a className="dropdown-item">Sign Up</a>
                 </Link>
               </div>
             </div>

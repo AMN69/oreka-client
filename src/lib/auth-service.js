@@ -33,6 +33,46 @@ class Auth {
     // return this.auth.post("/auth/logout", {}).then((response) => response.data);
   }
 
+  creagen({ month, year, userId }) {
+    const postRoute = "/agenda-routes/agendacreate/" + userId
+    return this.auth
+      .post(postRoute, { month, year })
+      .then(({ agenda }) => agenda);
+  }
+
+  // getagen({ year, month, userId }) {
+  //   const getRoute = "/agenda-routes/agenda?year=" + year + "&month=" + month; 
+  //   return this.auth
+  //     .get(getRoute, { userId })
+  //     .then(({ agenda }) => 
+  //     {console.log("auth-service return: ", agenda)
+  //       return agenda
+  //     }) 
+  // };
+
+  getagen = async ({ year, month, userId }) => {
+    const getRoute = "/agenda-routes/agenda?year=" + year + "&month=" + month; 
+    try {
+      const res = await this.auth.get(getRoute, { userId });
+      console.log("auth-service return: ", res.data);
+      return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
+  updateagen = async ({ agenId, agenda }) => {
+    const putRoute = "/agenda-routes/agendamodify/" + agenId
+    try {
+      console.log("Agenda before update in auth-service: ", agenda);
+      const res = await this.auth.patch(putRoute, {agenda});
+      console.log("auth-service return: ", res.data);
+      return res.data;
+    } catch (error) {
+        console.log(error);
+    }
+  }
+
   me() {
     return this.auth.get("/auth/me").then(({ data }) => data);
     // return this.auth.get("/auth/me").then((response) => response.data);
@@ -59,18 +99,6 @@ class Auth {
 
     return this.auth
       .put(putRoute, { formUsername, formUsersurname, formAge, formUserImgUrl })
-      .then(({message}) => message);
-  }
-
-  // From dashboard.js will come here to create a new sheet in the agenda with the data (userId and the complete agenda)
-  // this data must be taken and pass to the backend (in this case by id and body)
-  // the backend returns a message on message
-
-  dashboardPost({ userId, agenda }) {
-    const postRoute = "/agenda-routes/agendacreate/" + userId;
-
-    return this.auth
-      .post(postRoute, { agenda })
       .then(({message}) => message);
   }
 

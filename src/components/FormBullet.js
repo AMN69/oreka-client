@@ -1,15 +1,11 @@
-import React, { Component } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-import React, { useState } from "react";
-import ToDoTask from "/src/components/ToDoTask";
-
+import ToDoTask from "../components/ToDoTask";
 
 //peopleToMeet: [{
 // personToMeetDesc: String
 //}],
-
-
 
 function FormBullet() {
   const [inputText, setInputText] = useState("");
@@ -45,7 +41,7 @@ function FormBullet() {
       <div>
         <ul>
           {tasks.map((ToDoTask) => (
-            <ToDoTask text={toDoTask} onChecked={deleteTask} />
+            <ToDoTask text={ToDoTask} onChecked={deleteTask} />
           ))}
         </ul>
       </div>
