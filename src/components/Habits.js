@@ -5,11 +5,10 @@ import services from "../lib/auth-service";
 
 
 
-
 function Habits (agenda) {
   const [habits, setHabits] = useState([
-    {
-      habitToDoDesc: "",
+ 
+    {habitToDoDesc: "",
       habitDoneTick: false
     },
     {
@@ -24,24 +23,17 @@ function Habits (agenda) {
       habitToDoDesc: "",
       habitDoneTick: false
     }
-  ]);
+    ]);
 
-
-/*  useEffect(() => {
+  useEffect(() => {
     setHabits(agenda.habits)
-  }); 
-  */
+  }, [agenda.habits]);
+   
 
-
-
-useEffect(() => {
-  setHabits(agenda.habits)
-}, [agenda.habits]);
-
-
+    console.log(agenda.habits, "DESPUES USEEFFECT AGENDA HABITS")
+    
   function handleChange(event, index) {
     const { name, value } = event.target;
-
     const oldHabits = [...habits];
     oldHabits[index] = {
       ...habits[index],
@@ -53,32 +45,38 @@ useEffect(() => {
       //save on DB
       console.log(oldHabits);
     }
-
     setHabits(oldHabits);
+    console.log("DESPUES DE SETHABITS :", habits);
   }
-
   function handleKeyDown(event) {
     const { key } = event;
-
     if (key === "Enter") {
       console.log(habits);
     }
   }
-
-    function handleFormUpdate (event) {
+    
+    async function handleFormUpdate (event) {
       event.preventDefault();
       console.log("I'm in handleFormUpdate");
-      let agenId = this.props.agenda._id;
-      agenda.reward = "It's been updated succesfully three times."
-      console.log("agenda in handleFormUpdate before update: ", agenda);
-      console.log("agenda reward: ", agenda.reward);
-      const response = services.updateagen({agenId, habits});
+      let agenId = agenda._id;
+     
+      console.log("habits in handleFormUpdate before update: ", habits);
+    
+     const response = await services.updateagen(agenId, "habits", habits);
       console.log("after update response is: ", response);
       // services.updateagen({ agendaId: res._id, agenda: this.agenda });
     };
     // const { agenda } = this.props.agenda;
     console.log("I'm in FormCheck children");
     console.log("with agenda: ", agenda);
+
+    const habitsFields = null;
+    if (habits.length && habits.length < 4) { 
+      while (agenda.habits.length <4){
+        agenda.habits.push({habitDoneTick: false, habitToDoDesc: "" })
+    
+      }}
+      
 
   return (
     <div className="container">
@@ -103,7 +101,7 @@ useEffect(() => {
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder={`Habit ${index + 1}`}
-                value={habits.habitToDoDesc}
+                value={habits[index].habitToDoDesc}
               />
             </div>
           ))}
@@ -114,5 +112,4 @@ useEffect(() => {
     </div>
   );
 }
-
 export default Habits;

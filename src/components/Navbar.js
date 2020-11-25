@@ -37,8 +37,10 @@ class Navbar extends Component {
     const { user, logout, isLoggedin } = this.props;
     return (
       <nav className='navbar'>
+        <img className='logo' src="../images/logo3.png" alt="logo"/>
         <Link to={"/"} id='home-btn'>
-          <h4>Home</h4>
+        
+          <h5>Home</h5>
         </Link>
         {isLoggedin ? (
           <>

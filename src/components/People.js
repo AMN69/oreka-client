@@ -1,12 +1,6 @@
 import React, { useState, useEffect } from "react";
-
-import ToDoTask from "./ToDoTask";
-
-
-//peopleToMeet: [{
-// personToMeetDesc: String
-//}],
-
+import ToDoTask from "../components/ToDoTask";
+import services from "../lib/auth-service";
 
 function People(agenda) {
     const [inputText, setInputText] = useState("");
@@ -36,6 +30,17 @@ function People(agenda) {
   
     function deletePeople() {}
   
+    async function handleFormUpdate (event) {
+      event.preventDefault();
+      console.log("I'm in handleFormUpdate");
+      let agenId = agenda._id;
+     
+      console.log("habits in handleFormUpdate before update: ", peopleToMeet);
+    
+     const response = await services.updateagen(agenId, "peopleToMeet", peopleToMeet);
+      console.log("after update response is: ", response);
+      // services.updateagen({ agendaId: res._id, agenda: this.agenda });
+    };
     return (
       <div className="container">
         <div className="heading">
@@ -56,6 +61,9 @@ function People(agenda) {
               />
             ))}
           </ul>
+          <button onClick={handleFormUpdate}>
+            <span>UPDATE PEOPLE</span>
+          </button>
         </div>
       </div>
     );

@@ -179,23 +179,36 @@ class Dashboard extends Component {
       this.handleFormGetCurrent()
     };
     return (
+      
+      <div>
       <section>
         <form onSubmit={this.handleFormCreate}>
-
+        <div className="header1">
           <label>MONTH:</label>
-          <input type="number" name="month" value={month} onChange={this.handleChange} />
           <br/>
+          <input className="number" type="number" name="month" value={month} onChange={this.handleChange} />
+          <br/>
+        
           <label>YEAR:</label>
-          <input type="number" name="year" value={year} onChange={this.handleChange} />
+          <input className="number" type="number" name="year" value={year} onChange={this.handleChange} />
+        </div>
+        <div className="header2">
           <br/>
-          <input type="submit" value="CREATE NEW MONTH" />
+          <input type="submit" value="CREATE NEW MONTH"/> 
           <br/>
-        </form>
-        <p>{messageAboutAgenda}</p>
-        <button onClick={this.handleFormGet}>
+          <p>{messageAboutAgenda}</p>
+          <button onClick={this.handleFormGet}>
             <span>GET MONTH</span>
         </button>
-        <br/>
+        </div>
+        </form>
+        
+        
+      </section>
+
+      
+      <section>
+      
             <div>
                 <Habits {...agenda} />
             </div>
@@ -220,7 +233,10 @@ class Dashboard extends Component {
             <div>
                 <Insights {...agenda}/>
             </div>
+      
+    
       </section>
+    </div>
     );
   }
 };

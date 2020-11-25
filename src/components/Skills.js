@@ -1,13 +1,11 @@
 import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
-//skills: [{
-//  skillToDoDesc: String,
-//  skillDoneTick: Boolean//
-//}],
+import services from "../lib/auth-service";
 
 
-function FormSkills(agenda) {
+
+function Skills(agenda) {
   const [skills, setSkills] = useState([
     {
       skillToDoDesc: "",
@@ -31,9 +29,11 @@ function FormSkills(agenda) {
     setSkills(agenda.skills)
   }, [agenda.skills]);
 
+  
+  
+  
   function handleChange(event, index) {
     const { name, value } = event.target;
-
     const newSkills = [...skills];
     newSkills[index] = {
       ...skills[index],
@@ -48,15 +48,35 @@ function FormSkills(agenda) {
 
     setSkills(newSkills);
   }
-
-  function handleKeyDown(event) {
+    function handleKeyDown(event) {
     const { key } = event;
-
     if (key === "Enter") {
       console.log(skills);
     }
   }
 
+  async function handleFormUpdate (event) {
+    event.preventDefault();
+    console.log("I'm in handleFormUpdate");
+    let agenId = agenda._id;
+   
+    console.log("habits in handleFormUpdate before update: ", skills);
+  
+   const response = await services.updateagen(agenId, "skills", skills);
+    console.log("after update response is: ", response);
+    // services.updateagen({ agendaId: res._id, agenda: this.agenda });
+  };
+  // const { agenda } = this.props.agenda;
+  console.log("I'm in FormCheck children");
+  console.log("with agenda: ", agenda);
+
+  const skillsFields = null;
+    if (skills.length && skills.length < 4) { 
+      while (agenda.skills.length <4){
+        agenda.skills.push({skillToDoDesc: false, skillDoneTick: "" })
+    
+      }}
+  
   return (
     <div className="container">
       <h1>Skills To Learn </h1>
@@ -80,13 +100,16 @@ function FormSkills(agenda) {
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder={`Skill ${index + 1}`}
-                value={skills.skillToDoDesc}
+                value={skills[index].skillToDoDesc}
               />
             </div>
           ))}
+          <button onClick={handleFormUpdate}>
+            <span>UPDATE SKILLS</span>
+          </button>
       </form>
     </div>
   );
 }
 
-export default FormSkills;
+export default Skills;
