@@ -17,10 +17,6 @@ class Signup extends Component {
 
     try {
       const { email, password, username, usersurname, age } = this.state;
-      console.log("State before singup:", this.state );
-      console.log("user url: ", userImgUrl);
-      //console.log('Signup -> form submit', { username, password });
-      // console.log("Cloudinaryurl: ", cloudinaryUrl);
       await this.props.signup({ email, password, username, usersurname, age, userImgUrl });
       this.setState({
         email: "", 
@@ -42,7 +38,6 @@ class Signup extends Component {
   };
 
   handleFileUpload = async (e) => {
-    console.log("the file to be uploaded is: ", e.target.files[0]);
 
     // We create a new FormData. This is a javascript object that allow us to create a form object. 
     const uploadData = new FormData();
@@ -54,20 +49,14 @@ class Signup extends Component {
     try {
       const res = await auth.handleUpload(uploadData);
 
-      console.log("response is", res);
-      console.log("res secure url: ", res.secure_url);
-
       // this.setState({ userImgUrl: res.secure_url });
       userImgUrl = res.secure_url;
       // console.log("in state url: ", this.state.userImgUrl);
-      console.log("this state: ", this.state)
     } catch (error) {
-      console.log("Error while uploading the file: ", error);
     }
   };
 
  render() {
-  console.log(this.props);
   const { email, password, username, usersurname, age } = this.state;
     return (
       <div>

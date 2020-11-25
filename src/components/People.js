@@ -10,11 +10,11 @@ import ToDoTask from "./ToDoTask";
 
 function People(agenda) {
     const [inputText, setInputText] = useState("");
-    const [peoples, setPeoples] = useState([]);
+    const [peopleToMeet, setPeoples] = useState([]);
 
     useEffect(() => {
-      setPeoples(agenda.peoples)
-    }, [agenda.peoples]);
+      setPeoples(agenda.peopleToMeet)
+    }, [agenda.peopleToMeet]);
   
     function handleChange(event) {
       const newValue = event.target.value;
@@ -49,7 +49,7 @@ function People(agenda) {
         </div>
         <div>
           <ul>
-            {peoples.map((todoTask) => (
+            {peopleToMeet.map((todoTask) => (
               <ToDoTask
                 text={todoTask.personToMeetDesc}
                 onChecked={deletePeople}

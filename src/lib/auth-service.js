@@ -1,12 +1,6 @@
 import axios from "axios";
 
 class Auth {
-  // constructor() {
-  //   this.auth = axios.create({
-  //     baseURL: "http://localhost:4000",
-  //     withCredentials: true,
-  //   });
-  // }
   constructor() {
     this.auth = axios.create({
       baseURL: process.env.REACT_APP_API_URL,
@@ -33,28 +27,20 @@ class Auth {
     // return this.auth.post("/auth/logout", {}).then((response) => response.data);
   }
 
-  creagen({ month, year, userId }) {
+  creagen = async ({ month, year, userId}) => {
     const postRoute = "/agenda-routes/agendacreate/" + userId
-    return this.auth
-      .post(postRoute, { month, year })
-      .then(({ agenda }) => agenda);
+    try {
+      const res = await this.auth.post(postRoute, { month, year});
+      return res.data;
+    } catch (error) {
+      console.log(error);
+    }
   }
-
-  // getagen({ year, month, userId }) {
-  //   const getRoute = "/agenda-routes/agenda?year=" + year + "&month=" + month; 
-  //   return this.auth
-  //     .get(getRoute, { userId })
-  //     .then(({ agenda }) => 
-  //     {console.log("auth-service return: ", agenda)
-  //       return agenda
-  //     }) 
-  // };
-
+  
   getagen = async ({ year, month, userId }) => {
     const getRoute = "/agenda-routes/agenda?year=" + year + "&month=" + month; 
     try {
       const res = await this.auth.get(getRoute, { userId });
-      console.log("auth-service return: ", res.data);
       return res.data;
     } catch (error) {
         console.log(error);
@@ -64,9 +50,7 @@ class Auth {
   updateagen = async ({ agenId, agenda }) => {
     const putRoute = "/agenda-routes/agendamodify/" + agenId
     try {
-      console.log("Agenda before update in auth-service: ", agenda);
       const res = await this.auth.patch(putRoute, {agenda});
-      console.log("auth-service return: ", res.data);
       return res.data;
     } catch (error) {
         console.log(error);
@@ -94,11 +78,10 @@ class Auth {
   // this data must be taken and pass to the backend (in this case by id and body)
   // the backend returns a message on message
 
-  userprofile({userId, formUsername, formUsersurname, formAge, formUserImgUrl }) {
+  userprofile({userId, username, usersurname, age, userImgUrl }) {
     const putRoute = "/agenda-routes/usermodify/" + userId;
-
     return this.auth
-      .put(putRoute, { formUsername, formUsersurname, formAge, formUserImgUrl })
+      .put(putRoute, { username, usersurname, age, userImgUrl })
       .then(({message}) => message);
   }
 
@@ -114,7 +97,6 @@ class Auth {
 
   //[AMN-start] This is a service that receives the file with the user photo and sends it to the backend to upload in cloudinary.
   handleUpload = async (theFile) => {
-    console.log("file in service: ", theFile);
 
     try {
       const res = await this.auth.post("/agenda-routes/upload", theFile);

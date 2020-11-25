@@ -18,7 +18,7 @@ function Insights(agenda) {
         const { key } = event;
     
         if (key === "Enter") {
-          console.log(skills);
+          console.log(insights);
         }
       }
   

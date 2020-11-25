@@ -16,73 +16,157 @@ import axios from 'axios';
 
 class Dashboard extends Component {
 
-  state = { month: 0, 
-            year: 0,
-            agenda: {} };
-
-
+  state = { messageAboutAgenda: "",
+    month: 0, 
+    year: 0,
+    agenda: {
+      userId:{},
+      year: 0,
+    month: 0,
+    habits: [{
+        habitToDoDesc: "",
+        habitDoneTick: false
+    }],
+    skills: [{
+        skillToDoDesc: "",
+        skillDoneTick: false
+    }],
+    appointments: [{
+        appointmentDesc: "",
+        appointmentTick: false
+    }],
+    peopleToMeet: [{
+        personToMeetDesc: "",
+        personToMeetTick: false
+    }],
+    placesToVisit: [{
+        placeToVisitDesc: "",
+        placeToVisitTick: false
+    }],
+    finance: [
+        [
+              {
+              incomeDesc: "",
+              incomeAmount: 0
+              }   
+        ],
+        [
+        {
+              expenseDesc: "",
+              expenseAmount: 0
+              }  
+        ]
+    ],
+    reward: "",
+    insights: ""
+    } };
+  
   handleFormCreate = async (event) => {
     event.preventDefault();
 
     try {
       const { month, year } = this.state;
       const userId = this.props.user._id;
-      console.log("month:", month);
-      console.log("year:", year);
-      console.log("userId: ", userId);
-      const agenda = await this.props.creagen({ month, year, userId });
-      this.setState({
-        month: "", 
-        year: "",
-        agenda: agenda
-      });
+      const agendaCheck = await services.getagen({ year, month, userId });
+      if (agendaCheck) {
+        this.setState({messageAboutAgenda: "This year/month exists already, you can't create it."});
+        
+      } else {
+        this.setState({messageAboutAgenda: "Month and year were successfully created."});
+        const agenda = await services.creagen({ month, year, userId});
+        this.setState({
+          month: month, 
+          year: year,
+          agenda: {
+            userId: agenda.userId,
+            year: agenda.year,
+            month: agenda.month,
+            habits: [{
+                habitToDoDesc: "",
+                habitDoneTick: false
+            }],
+            skills: [{
+                skillToDoDesc: "",
+                skillDoneTick: false
+            }],
+            appointments: [{
+                appointmentDesc: "",
+                appointmentTick: false
+            }],
+            peopleToMeet: [{
+                personToMeetDesc: "",
+                personToMeetTick: false
+            }],
+            placesToVisit: [{
+                placeToVisitDesc: "",
+                placeToVisitTick: false
+            }],
+            finance: [
+                [
+                      {
+                      incomeDesc: "",
+                      incomeAmount: 0
+                      }   
+                ],
+                [
+                {
+                      expenseDesc: "",
+                      expenseAmount: 0
+                      }  
+                ]
+            ],
+            reward: "",
+            insights: ""
+          }
+        });
+      }
     } catch (error) {
         console.log("Error while creating the agenda: ", error);
+        this.setState({messageAboutAgenda: "Error while creating the agenda: ," + error});
     }
     return;
   };
 
-  // Idea: when we leave this page in unmount to update the agenda.
-  // Question: do we have the page agenda info that is within FormCheck, FormBullet
-  // FormFinance here as well or do we have to in each of those components unmount
-  // update the agenda???
-  
   handleFormUpdate = async (event) => {
     event.preventDefault();
-    console.log("I'm in handleFormUpdate");
     let {agenda} = this.state;
     let agenId = agenda._id;
-    agenda.reward = "It's been updated succesfully three times."
-    console.log("agenda in handleFormUpdate before update: ", agenda);
-    console.log("agenda reward: ", agenda.reward);
+    agenda.reward = "It's been updated succesfully three times.";
     const response = services.updateagen({agenId, agenda});
-    console.log("after update response is: ", response);
-    // services.updateagen({ agendaId: res._id, agenda: this.agenda });
   };
-
-  // childrenUpdateParentState (agenda) {
-  //   console.log("I'm back from children");
-  //   let agendaCopy = [...this.state.agenda];
-  //   this.setState ({agenda});
-  // }
 
   handleFormGet = async (event) => {
     event.preventDefault();
-    console.log("I'm within handleFormGet")
 
     try {
       const { month, year } = this.state;
       const userId = this.props.user._id;
-      console.log("month:", month);
-      console.log("year:", year);
-      console.log("userId: ", userId);
       const agenda = await services.getagen({ year, month, userId });
-      console.log("I'm back from get agenda with res: ", agenda);
       this.setState({ agenda: agenda});
     } catch (error) {
         console.log("Error while getting the agenda: ", error);
+        this.setState({messageAboutAgenda: "Error while getting the agenda: ," + error});
+        
     }
-  };        
+  };
+  
+  handleFormGetCurrent = async () => {
+
+    try {
+      // const { month, year } = this.state;
+      const userId = this.props.user._id;
+      const year = new Date().getFullYear();
+      const month = new Date().getMonth()+1;
+      this.setState({month: month})
+      this.setState({year: year})
+      const agenda = await services.getagen({ year, month, userId });
+      this.setState({ agenda: agenda});
+    } catch (error) {
+        console.log("Error while getting the agenda: ", error);
+        this.setState({messageAboutAgenda: "Error while getting the agenda: ," + error});
+        
+    }
+  };
         
   handleChange = event => {
     const { name, value } = event.target;
@@ -90,7 +174,10 @@ class Dashboard extends Component {
   };
   
   render() {
-    const { month, year, agenda } = this.state;
+    const { messageAboutAgenda, month, year, agenda } = this.state;
+    if (month === 0 && year === 0) {
+      this.handleFormGetCurrent()
+    };
     return (
       <section>
         <form onSubmit={this.handleFormCreate}>
@@ -104,14 +191,11 @@ class Dashboard extends Component {
           <input type="submit" value="CREATE NEW MONTH" />
           <br/>
         </form>
+        <p>{messageAboutAgenda}</p>
         <button onClick={this.handleFormGet}>
             <span>GET MONTH</span>
         </button>
         <br/>
-        <button onClick={this.handleFormUpdate}>
-          <span>UPDATE AGENDA</span>
-        </button>
-        
             <div>
                 <Habits {...agenda} />
             </div>
@@ -136,8 +220,6 @@ class Dashboard extends Component {
             <div>
                 <Insights {...agenda}/>
             </div>
-
-    
       </section>
     );
   }

@@ -22,12 +22,12 @@ The next features to add to the tool will be a weekly/daily planner, financial y
 ## Backlog
 - Financial: plan vs real.
 - Financial: to have yearly views rendering all months and year-totals by incomes/expenses
-- Financial: to have a wealth area with you assets: real state, cars, etc...
+- Financial: to have a wealth area with your assets: real state, cars, etc...
 - Financial: to facilitate to the user by color detecting months without agenda.
 - Other (non-financial): yearly view, weekly view.
 - Other: deadlines for tasks.
 - Other (non-financial): email warnings when deadline is close or overdue.
-- User data: to update email, password, photo and add other fields like: email for example.
+- User data: to update email, password, photo and add other fields like email for example.
 - Other: user arrows (next/previous) to change months sequentially on dashboard and summary pages.
 
 

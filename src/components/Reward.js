@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Insights from "./Insights";
 
 
 function Reward(agenda) {
@@ -19,7 +20,7 @@ function Reward(agenda) {
         const { key } = event;
     
         if (key === "Enter") {
-          console.log(skills);
+          console.log(reward);
         }
       }
   

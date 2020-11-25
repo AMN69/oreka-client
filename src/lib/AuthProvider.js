@@ -79,6 +79,9 @@ class AuthProvider extends Component {
     // lamamos a auth.creagen que se conecta con la ruta del backend
     auth
       .creagen({ month, year, userId })
+      .then(({ agenda }) => 
+        {console.log("I'm back within creagen on AuthProvider", agenda)
+        return agenda})
       .catch(({ error }) =>
         this.setState({ message: error.data.statusMessage })
       );
