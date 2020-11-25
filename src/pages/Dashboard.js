@@ -16,9 +16,49 @@ import axios from 'axios';
 
 class Dashboard extends Component {
 
-  state = { month: 0, 
-            year: 0,
-            agenda: {} };
+    state = { month: 0, 
+        year: 0,
+        agenda: {
+          userId:{},
+          year: 0,
+        month: 0,
+        habits: [{
+            habitToDoDesc: "",
+            habitDoneTick: false
+        }],
+        skills: [{
+            skillToDoDesc: "",
+            skillDoneTick: false
+        }],
+        appointments: [{
+            appointmentDesc: "",
+            appointmentTick: false
+        }],
+        peopleToMeet: [{
+            personToMeetDesc: "",
+            personToMeetTick: false
+        }],
+        placesToVisit: [{
+            placeToVisitDesc: "",
+            placeToVisitTick: false
+        }],
+        finance: [
+            [
+                  {
+                  incomeDesc: "",
+                  incomeAmount: 0
+                  }   
+            ],
+            [
+            {
+                  expenseDesc: "",
+                  expenseAmount: 0
+                  }  
+            ]
+        ],
+        reward: "",
+        insights: ""
+        } };
 
 
   handleFormCreate = async (event) => {
@@ -92,26 +132,35 @@ class Dashboard extends Component {
   render() {
     const { month, year, agenda } = this.state;
     return (
+      
+      <div>
       <section>
         <form onSubmit={this.handleFormCreate}>
-
+        <div className="header1">
           <label>MONTH:</label>
-          <input type="number" name="month" value={month} onChange={this.handleChange} />
           <br/>
+          <input className="number" type="number" name="month" value={month} onChange={this.handleChange} />
+          <br/>
+        
           <label>YEAR:</label>
-          <input type="number" name="year" value={year} onChange={this.handleChange} />
+          <input className="number" type="number" name="year" value={year} onChange={this.handleChange} />
+        </div>
+        <div className="header2">
           <br/>
-          <input type="submit" value="CREATE NEW MONTH" />
+          <input type="submit" value="CREATE NEW MONTH"/> 
           <br/>
-        </form>
-        <button onClick={this.handleFormGet}>
+          <button onClick={this.handleFormGet}>
             <span>GET MONTH</span>
         </button>
-        <br/>
-        <button onClick={this.handleFormUpdate}>
-          <span>UPDATE AGENDA</span>
-        </button>
+        </div>
+        </form>
         
+        
+      </section>
+
+      
+      <section>
+      
             <div>
                 <Habits {...agenda} />
             </div>
@@ -136,9 +185,10 @@ class Dashboard extends Component {
             <div>
                 <Insights {...agenda}/>
             </div>
-
+      
     
       </section>
+    </div>
     );
   }
 };

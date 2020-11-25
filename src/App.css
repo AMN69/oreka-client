@@ -7,15 +7,24 @@
   padding: 20px;;
 }
 
+.logo {
+  width: 17%;
+  
+}
+
 nav.navbar { 
   display: flex;
   padding: 20px;
-  background: #686de0; 
+  font-size: 0.5rem;
+  background: #83B4B4;
+  font-family: "Architects Daughter", cursive; 
 }
 
 nav.navbar .navbar-user{
   margin-left: 10px;
   color: white;
+  font-size: 0.5rem;
+  font-family: "Architects Daughter", cursive; 
 }
 
 button.navbar-button {
@@ -23,6 +32,33 @@ button.navbar-button {
   width: 100px;
   border-radius: 3px;
   margin: 0 10px;
+}
+
+.btn-secondary {
+  color: #fff;
+  background-color: #D9AC63;
+  border-color: #D9AC63;
+
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  z-index: 1000;
+  display: none;
+  float: left;
+  min-width: 10rem;
+  padding: .5rem 0;
+  margin: .125rem 0 0;
+  font-size: 1rem;
+  color: #212529;
+  text-align: left;
+  list-style: none;
+  background-color: #fff;
+  background-clip: padding-box;
+  border: 1px solid rgba(0,0,0,.15);
+  border-radius: .25rem;
 }
 
 #home-btn {
@@ -46,7 +82,37 @@ button.navbar-button {
 
 }
 
+.h1, h1 {
+  font-family: 'Architects Daughter';
+  color: white;
+  font-size: 1.3rem;
+  background-color: #83B4B4;
+}
 
+div.header1 {
+  display: flex;
+  font-family: 'Architects Daughter';
+  margin: 20px;
+ 
+}
+div.header2 {
+  display: flex;
+    font-family: 'Architects Daughter';
+    margin: 5%;
+    flex-direction: column;
+    width: 25%;
+    font-size: 60%;
+  
+  
+  
+  
+ 
+}
+
+input.number {
+  width: 10%;
+  margin: 10px;
+}
 _____
 
 
