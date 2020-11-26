@@ -71,10 +71,12 @@ class Dashboard extends Component {
       } else {
         this.setState({messageAboutAgenda: "Month and year were successfully created."});
         const agenda = await services.creagen({ month, year, userId});
+        console.log("Agenda id: ", agenda._id);
         this.setState({
           month: month, 
           year: year,
           agenda: {
+            _id: agenda._id, 
             userId: agenda.userId,
             year: agenda.year,
             month: agenda.month,
@@ -138,6 +140,7 @@ class Dashboard extends Component {
       const userId = this.props.user._id;
       const agenda = await services.getagen({ year, month, userId });
       this.setState({ agenda: agenda});
+      console.log("Finance agenda en Dashboard get: ", agenda);
     } catch (error) {
         console.log("Error while getting the agenda: ", error);
         this.setState({messageAboutAgenda: "Error while getting the agenda: ," + error});
@@ -156,6 +159,7 @@ class Dashboard extends Component {
       this.setState({year: year})
       const agenda = await services.getagen({ year, month, userId });
       this.setState({ agenda: agenda});
+      console.log("Finance agenda en Dashboard get: ", agenda);
     } catch (error) {
         console.log("Error while getting the agenda: ", error);
         this.setState({messageAboutAgenda: "Error while getting the agenda: ," + error});

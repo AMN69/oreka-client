@@ -146,7 +146,9 @@ class UserProfile extends Component {
                 totalHabits++;
             }
         }
-        return (totalHabitsAccomplished * 100) / totalHabits; 
+        let toRoundTotalGoalsAccomplished = (totalHabitsAccomplished * 100) / totalHabits;
+        let roundedTotalGoalsAccomplished = Math.round(toRoundTotalGoalsAccomplished * 100)/ 100;
+        return roundedTotalGoalsAccomplished; 
     }
 
     render() {
