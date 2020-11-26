@@ -7,8 +7,8 @@ import services from "../lib/auth-service";
 
 function Habits (agenda) {
   const [habits, setHabits] = useState([
- 
-    {habitToDoDesc: "",
+    {
+      habitToDoDesc: "",
       habitDoneTick: false
     },
     {
@@ -23,14 +23,13 @@ function Habits (agenda) {
       habitToDoDesc: "",
       habitDoneTick: false
     }
-    ]);
+  ]);
 
   useEffect(() => {
     setHabits(agenda.habits)
   }, [agenda.habits]);
-   
-
-    console.log(agenda.habits, "DESPUES USEEFFECT AGENDA HABITS")
+  
+  console.log(agenda.habits, "DESPUES USEEFFECT AGENDA HABITS")
     
   function handleChange(event, index) {
     const { name, value } = event.target;
@@ -101,7 +100,7 @@ function Habits (agenda) {
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder={`Habit ${index + 1}`}
-                value={habits[index].habitToDoDesc}
+                value={habit.habitToDoDesc}
               />
             </div>
           ))}

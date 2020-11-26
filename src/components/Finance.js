@@ -52,7 +52,7 @@ function Finance(agenda) {
       }
     });
   }
-
+  console.log("Finance agenda: ", agenda);
   return (
     <div className="container">
       <h1>Finance </h1>

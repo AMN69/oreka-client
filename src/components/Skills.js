@@ -73,7 +73,7 @@ function Skills(agenda) {
   const skillsFields = null;
     if (skills.length && skills.length < 4) { 
       while (agenda.skills.length <4){
-        agenda.skills.push({skillToDoDesc: false, skillDoneTick: "" })
+        agenda.skills.push({skillDoneTick: false, skillToDoDesc: "" })
     
       }}
   
@@ -100,7 +100,7 @@ function Skills(agenda) {
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder={`Skill ${index + 1}`}
-                value={skills[index].skillToDoDesc}
+                value={skill.skillToDoDesc}
               />
             </div>
           ))}

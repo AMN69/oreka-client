@@ -6,7 +6,17 @@ function Appointments(agenda) {
     const [inputText, setInputText] = useState("");
     const [appointments, setAppointments] = useState([]);
     
-    useEffect(() => {
+    // useEffect(() => {
+    //     if (agenda.appointments[0].appointmentDesc != "") {
+    //       setAppointments(agenda.appointments)
+    //     } else {
+    //       for (let i = 0; i < appointments.length; i++) {
+    //         appointments.splice(0, 1);
+    //       }
+    //     }
+    //   }, [agenda.appointments]);
+
+      useEffect(() => {
         setAppointments(agenda.appointments)
       }, [agenda.appointments]);
 
