@@ -63,7 +63,9 @@ function Skills(agenda) {
       }}
   return (
     <div className="container">
+    <div className="heading">
       <h1>Skills To Learn </h1>
+      </div>
       <form>
         {skills.length &&
           skills.map((skill, index) => (
@@ -83,11 +85,12 @@ function Skills(agenda) {
                   handleChange(e, index);
                 }}
                 onKeyDown={handleKeyDown}
-                placeholder={`Skill ${index + 1}`}
+                placeholder=" ..........."
                 value={skill.skillToDoDesc}
               />
             </div>
           ))}
+          <br/>
           <button onClick={handleFormUpdate}>
             <span>UPDATE SKILLS</span>
           </button>

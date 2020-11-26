@@ -5,6 +5,7 @@ import axios from 'axios';
 import services from "../lib/auth-service";
 
 
+
 class UserProfile extends Component {
     constructor(props){
         super(props)
@@ -158,43 +159,66 @@ class UserProfile extends Component {
         };
 
         return (
+           <section>
             <div className="UserProfile">
+               
                 <form onSubmit={this.handleFormSubmit}>
-                    <br/>
-                    <label>Name:</label>
-                    <input type="text" name="username" value={username} onChange={e => this.handleChange(e)} />
-                    <br/>
-                    <label>Surname:</label>
-                    <input type="text" name="usersurname" value={usersurname} onChange={e => this.handleChange(e)} />
-                    <br/>
-                    <label>Age:</label>
-                    <input type="number" name="age" value={age} onChange={e => this.handleChange(e)} />
-                    <br/>
-                    <br/>
-                    <img src={userImgUrl} alt="user photo" width="150" height="200"/>
-                    <br/>
-                    <br/>
-                    <input type="submit" value="UPDATE USER'S INFO" />
-                    <p>{messageAboutUser}</p>
-                    <p> -------------------------------------- </p>
+                <div className="usergen">
+                    <div className="user1">
+                        <br/>
+                        <label>Name:</label>
+                        <input type="text" name="username" value={username} onChange={e => this.handleChange(e)} />
+                        <br/>
+                        <label>Surname:</label>
+                        <input type="text" name="usersurname" value={usersurname} onChange={e => this.handleChange(e)} />
+                        <br/>
+                        <label>Age:</label>
+                        <input type="number" name="age" value={age} onChange={e => this.handleChange(e)} />
+                        <br/>
+                        <br/>
+                    </div>
+                    <div className="imagen">
+                        <img src={userImgUrl} alt="user photo" width="125" height="150"/ >
+                        <br/>
+                        <br/>
+                        <input type="submit" value="UPDATE INFO" />
+                        <p>{messageAboutUser}</p>
+                        
+                    </div>
+                </div>
+                        
+                   
+                <div className="financial1">
                     <label>MONTH:</label>
-                    <input type="number" name="month" value={month} onChange={this.handleChange} />
+                    <input type="number" name="month" value={month} onChange={this.handleChange} className="number" />
                     <br/>
                     <label>YEAR:</label>
-                    <input type="number" name="year" value={year} onChange={this.handleChange} />
+                    <input type="number" name="year" value={year} onChange={this.handleChange} className="number" />
                     <br/>
+                    <br/>
+                    <button onClick={this.handleFormGet}>
+                    <span>GET MONTH</span>
+                
+                    </button>
+                </div>
+               
                 </form>
                 <br/>
-                <h5>Financial balance and goals accomplished</h5>
-                <br/>
-                <p>Financial balance: {monthlyBalance}</p>
-                <p>Goals accomplished: {monthlyAccomplishments}%</p>
-                <br/>
-                <button onClick={this.handleFormGet}>
-                    <span>GET MONTH</span>
-                </button>
-                <p>{messageAboutAgenda}</p>
+                <div className="financial">
+
+                
+                    <h5>Score</h5>
+                    <br/>
+                    <p>Financial balance: {monthlyBalance}</p>
+                    <p>Goals accomplished: {monthlyAccomplishments}%</p>
+                    <br/>
+                    
+                    <p>{messageAboutAgenda}</p>
+                </div>
             </div>
+        </section> 
+            
+            
         )
     }
 }

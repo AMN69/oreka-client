@@ -60,9 +60,10 @@ function Places(agenda) {
             text={todoTask.placeToVisitDesc} 
             onChecked={deletePlace} />
           ))}
+          <br/>
         </ul>
         <button onClick={handleFormUpdate}>
-            <span>UPDATE PLACE</span>
+            <span>UPDATE PLACES</span>
           </button>
       </div>
     </div>

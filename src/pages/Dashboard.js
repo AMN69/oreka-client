@@ -179,13 +179,18 @@ class Dashboard extends Component {
     };
     return (
       
-      <div>
       
-      <section>
+     <div className="header"> 
+      <section className="header">
       
-        <form onSubmit={this.handleFormCreate}>
-        <div className="header1">
+      <div className="heading">
         <h1>Dashboard</h1>
+        </div>
+      
+      <form onSubmit={this.handleFormCreate} className="header">
+        
+       
+        <div className="header1">
           <label>MONTH:</label>
           <br/>
           <input className="number" type="number" name="month" value={month} onChange={this.handleChange} />
@@ -196,13 +201,13 @@ class Dashboard extends Component {
         </div>
         <div className="header2">
           <br/>
-          <input type="submit" value="CREATE NEW MONTH"/> 
-          <br/>
+          <input className="submit" type="submit" value="CREATE NEW" />
           <p>{messageAboutAgenda}</p>
           <button onClick={this.handleFormGet}>
             <span>GET MONTH</span>
         </button>
         </div>
+        
         </form>
         
         
@@ -226,7 +231,13 @@ class Dashboard extends Component {
             <div>
                 <People {...agenda}/>
             </div>
-          
+
+            <div>
+                <Incomes {...agenda}/>
+            </div>
+            <div>
+                <Expenses {...agenda}/>
+            </div>
             
             <div>
                 <Reward {...agenda}/>
@@ -234,12 +245,7 @@ class Dashboard extends Component {
             <div>
                 <Insights {...agenda}/>
             </div>
-            <div>
-                <Incomes {...agenda}/>
-            </div>
-            <div>
-                <Expenses {...agenda}/>
-            </div>
+            
       
     
       </section>

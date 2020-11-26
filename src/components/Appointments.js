@@ -70,6 +70,7 @@ function Appointments(agenda) {
               text={todoTask.appointmentDesc} 
               onChecked={deleteAppointment} />
             ))}
+            <br/>
           </ul>
           <button onClick={handleFormUpdate}>
             <span>UPDATE APPOINTMENTS</span>

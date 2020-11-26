@@ -96,6 +96,7 @@ function Expenses (agenda) {
               />
             </div>
           ))}
+          <br/>
             <button onClick={handleFormUpdate}>
             <span>UPDATE EXPENSES</span>
           </button>
