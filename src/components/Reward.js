@@ -48,6 +48,7 @@ function Reward(agenda) {
           placeholder="Write here your reward"
           onKeyDown={handleKeyDown}
           value={reward} />
+          <br/>
           <button onClick={handleFormUpdate}>
             <span>UPDATE REWARD</span>
           </button>

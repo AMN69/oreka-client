@@ -20,17 +20,21 @@ class Login extends Component {
 
     return (
       <div className="login-div">
+      <div className="header"></div>
         <h1 className="h1-centered">Login</h1>
 
         <form onSubmit={this.handleFormSubmit}>
-          
+          <div className="login">
           <label>Email:</label>
-          <input type="text" name="email" value={email} onChange={this.handleChange}/>
+          <input type="text" name="email" value={email} onChange={this.handleChange} className="submit"/>
           <br/>
+          </div>
+          <div className="login">
           <label>Password:</label>
-          <input type="password" name="password" value={password} onChange={this.handleChange} />
+          <input type="password" name="password" value={password} onChange={this.handleChange} className="submit" />
+          </div>
           <br/>
-          <input type="submit" value="Login" />
+          <input type="submit" value="LOGIN" className="login" />
         </form>
       </div>
     );

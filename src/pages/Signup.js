@@ -63,7 +63,7 @@ class Signup extends Component {
         <h1 className="h1-centered">Sign Up</h1>
 
         <form onSubmit={this.handleFormSubmit}>
-
+      
           <label>Email:</label>
           <input type="text" name="email" value={email} onChange={this.handleChange} />
           <br/>

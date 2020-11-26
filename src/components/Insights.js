@@ -48,6 +48,7 @@ function Insights(agenda) {
           placeholder="Write here your Insights"
           onKeyDown={handleKeyDown}
           value={insights} />
+          <br/>
           <button onClick={handleFormUpdate}>
             <span>UPDATE INSIGHTS</span>
           </button>

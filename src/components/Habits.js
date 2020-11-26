@@ -65,7 +65,9 @@ function Habits (agenda) {
       }}
   return (
     <div className="container">
+    <div className="heading">
       <h1>Habits To Adopt </h1>
+      </div>
       <form>
         {habits.length &&
           habits.map((habit, index) => (
@@ -86,15 +88,18 @@ function Habits (agenda) {
                   handleChange(e, index);
                 }}
                 onKeyDown={handleKeyDown}
-                placeholder={`Habit ${index + 1}`}
+                placeholder=" ..........."
                 value={habit.habitToDoDesc}
               />
+              
             </div>
           ))}
+          <br/>
             <button onClick={handleFormUpdate}>
             <span>UPDATE HABITS</span>
           </button>
       </form>
+    
     </div>
   );
 }

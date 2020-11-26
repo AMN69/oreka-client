@@ -16,7 +16,7 @@ nav.navbar {
   display: flex;
   padding: 20px;
   font-size: 0.5rem;
-  background: #83B4B4;
+  
   font-family: "Architects Daughter", cursive; 
 }
 
@@ -39,6 +39,20 @@ button.navbar-button {
   background-color: #D9AC63;
   border-color: #D9AC63;
 
+}
+
+div.login {
+  margin-left: 7rem;
+  font-family: tahoma;
+  background-image: "./public/images/background.jpg"
+}
+div.imagen {
+  display: flex;
+  flex-direction: column;
+  margin-left: 3rem;
+  margin-top: 3rem;
+  font-family: tahoma;
+  background-image: "./public/images/background.jpg"
 }
 
 .dropdown-menu {
@@ -73,6 +87,8 @@ button.navbar-button {
 
 .h1-centered {
   text-align: center;
+  margin-left: 6rem;
+  margin-right: 6rem;
 }
 
 .h1-centered > form {
@@ -108,11 +124,52 @@ div.header2 {
   
  
 }
+input{
+  font-family: 'tahoma';
+  margin: 2%;
+
+}
+input.login{
+  background: #D9AC63;
+  display: block;
+  padding: 0.2rem 1rem;
+  border-radius: 5px;
+  border: 2px solid hsl(198, 1%, 29%);
+  font-size: 0.8rem;
+  font-family: tahoma;
+  text-align: center;
+  margin-left: 40%;
+  
+}
+input.login:hover{
+  background-color: #83B4B4;
+  
+}
+
 
 input.number {
-  width: 10%;
+  width: 15%;
   margin: 10px;
+  text-align: center;
+
 }
+input.submit {
+  background: #f1f5f8;
+  display: block;
+  padding: 0.3rem 1rem;
+  border-radius: 5px;
+  border: 2px solid hsl(198, 1%, 29%);
+  font-size: 0.8rem;
+  font-family: 'Architects Daughter';
+  text-align: center;
+  
+  ; 
+ 
+}
+
+
+
+
 _____
 
 
@@ -144,6 +201,19 @@ body {
   padding: 1rem;
   box-sizing: border-box;
 }
+
+form.header {
+  margin: 0;
+  padding: 0;
+  display: flex;
+}
+input.number {
+  width: 4rem;
+  height: 2rem;
+  margin: 10px;
+  text-align: center;
+}
+
 .heading {
   display: flex;
   align-items: center;
@@ -164,6 +234,19 @@ body {
   border-radius: 20% 5% 20% 5%/5% 20% 25% 20%;
   background-color: #49756e;
   font-size: 0.5rem;
+}
+
+form{
+  margin: 1%;
+  padding: 5%;
+}
+div.container{
+  margin-top: 2%;
+}
+
+dl, ol, ul {
+  margin-left: 2rem;
+  font-family: tahoma;
 }
 
 .form input {
@@ -188,18 +271,76 @@ button {
   text-decoration: none;
   padding-bottom: 3px;
   border-radius: 5px;
-  background-color: #d9ac63;
+  background-color: 
+  
 }
+
+textarea {
+  overflow: auto;
+  resize: vertical;
+  display: block;
+  width: 90%;
+  height: 10rem;
+}
+
 button span {
   background: #f1f5f8;
   display: block;
-  padding: 0.5rem 1rem;
+  padding: 0.2rem 1rem;
   border-radius: 5px;
   border: 2px solid hsl(198, 1%, 29%);
+  text-align: center;
+  font-size: 0.8rem;
+  background: #D9AC63;
+  color: white;
+  
+}
+button span:hover{
+  background: #92718b;
+  color: white;
 }
 
 li {
   text-align: left;
   position: relative;
   padding: 0.5rem;
+}
+
+div.financial{
+  background-color: #83B4B4;
+  padding-left: 2rem;
+  padding-top: 1rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  border-radius: 2rem;
+  color: white;
+  font-family: 'Architects Daughter';
+  font-size: 110%;
+
+}
+
+div.financial1{
+  
+  padding-left: 4rem;
+  padding-top: 1rem;
+  padding-bottom: 2rem;
+  margin-left: 10%;
+  margin-right: 10%;
+  margin-bottom: 10%;
+  border-radius: 2rem;
+  font-family: 'Architects Daughter';
+  font-size: 110%;
+  background-color: #D9AC63;
+
+}
+
+
+.usergen{
+  display: flex;
+
+}
+
+div.user1{
+  display: flex;
+  flex-direction: column;
 }
