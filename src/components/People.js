@@ -53,14 +53,14 @@ function People(agenda) {
           </button>
         </div>
         <div>
-          <ul>
+          
             {peopleToMeet.map((todoTask) => (
               <ToDoTask
                 text={todoTask.personToMeetDesc}
                 onChecked={deletePeople}
               />
             ))}
-          </ul>
+          
           <button onClick={handleFormUpdate}>
             <span>UPDATE PEOPLE</span>
           </button>

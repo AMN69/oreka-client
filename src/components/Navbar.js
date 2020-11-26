@@ -40,7 +40,7 @@ class Navbar extends Component {
         <img className='logo' src="../images/logo3.png" alt="logo"/>
         <Link to={"/"} id='home-btn'>
         
-          <h5>Home</h5>
+          <h5></h5>
         </Link>
         {isLoggedin ? (
           <>

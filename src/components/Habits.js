@@ -2,13 +2,10 @@ import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axios from 'axios';
 import services from "../lib/auth-service";
-
-
-
 function Habits (agenda) {
   const [habits, setHabits] = useState([
- 
-    {habitToDoDesc: "",
+    {
+      habitToDoDesc: "",
       habitDoneTick: false
     },
     {
@@ -23,15 +20,11 @@ function Habits (agenda) {
       habitToDoDesc: "",
       habitDoneTick: false
     }
-    ]);
-
+  ]);
   useEffect(() => {
     setHabits(agenda.habits)
   }, [agenda.habits]);
-   
-
-    console.log(agenda.habits, "DESPUES USEEFFECT AGENDA HABITS")
-    
+  console.log(agenda.habits, "DESPUES USEEFFECT AGENDA HABITS")
   function handleChange(event, index) {
     const { name, value } = event.target;
     const oldHabits = [...habits];
@@ -40,7 +33,6 @@ function Habits (agenda) {
       [name]: value
     };
     console.log(name, value);
-
     if (name === "habitDoneTick") {
       //save on DB
       console.log(oldHabits);
@@ -54,14 +46,11 @@ function Habits (agenda) {
       console.log(habits);
     }
   }
-    
     async function handleFormUpdate (event) {
       event.preventDefault();
       console.log("I'm in handleFormUpdate");
       let agenId = agenda._id;
-     
       console.log("habits in handleFormUpdate before update: ", habits);
-    
      const response = await services.updateagen(agenId, "habits", habits);
       console.log("after update response is: ", response);
       // services.updateagen({ agendaId: res._id, agenda: this.agenda });
@@ -69,15 +58,11 @@ function Habits (agenda) {
     // const { agenda } = this.props.agenda;
     console.log("I'm in FormCheck children");
     console.log("with agenda: ", agenda);
-
     const habitsFields = null;
     if (habits.length && habits.length < 4) { 
       while (agenda.habits.length <4){
         agenda.habits.push({habitDoneTick: false, habitToDoDesc: "" })
-    
       }}
-      
-
   return (
     <div className="container">
       <h1>Habits To Adopt </h1>
@@ -101,7 +86,7 @@ function Habits (agenda) {
                 }}
                 onKeyDown={handleKeyDown}
                 placeholder={`Habit ${index + 1}`}
-                value={habits[index].habitToDoDesc}
+                value={habit.habitToDoDesc}
               />
             </div>
           ))}

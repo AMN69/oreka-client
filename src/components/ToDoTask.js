@@ -11,9 +11,9 @@ function ToDoTask(props) {
 
   return (
     <div onClick={handleClick}>
-      <li style={{ textDecoration: isDone ? "line-through" : "none" }}>
+      <p style={{ textDecoration: isDone ? "line-through" : "none" }}/>
         {props.text}
-      </li>
+      
     </div>
   );
 }

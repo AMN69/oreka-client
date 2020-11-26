@@ -43,20 +43,14 @@ class UserProfile extends Component {
                     placeToVisitDesc: "",
                     placeToVisitTick: false
                 }],
-                finance: [
-                    [
-                            {
-                            incomeDesc: "",
-                            incomeAmount: 0
-                            }   
-                    ],
-                    [
-                    {
-                            expenseDesc: "",
-                            expenseAmount: 0
-                            }  
-                    ]
-                ],
+                incomes: [{
+                    incomeDesc: "",
+                    incomeAmount: 0
+                }],
+                expenses: [{
+                    expenseDesc: "",
+                    expenseAmount: 0
+                }],
                 reward: "",
                 insights: ""
             }
@@ -119,15 +113,15 @@ class UserProfile extends Component {
 
     calculateMonthlyBalance (agenda) {
         let monthlyIncomes = 0;
-        if (agenda.finance[0] != undefined) {
-            for (let i = 0; i < agenda.finance[0].length; i++) {
-                monthlyIncomes = monthlyIncomes + agenda.finance[0][i].incomeAmount;
+        if (agenda.incomes != undefined) {
+            for (let i = 0; i < agenda.incomes.length; i++) {
+                monthlyIncomes = monthlyIncomes + agenda.incomes[i].incomeAmount;
             };
         };
         let monthlyExpenses = 0;
-        if (agenda.finance[1] != undefined) {
-            for (let i = 0; i < agenda.finance[1].length; i++) {
-                monthlyExpenses = monthlyExpenses + agenda.finance[1][i].expenseAmount;
+        if (agenda.expenses != undefined) {
+            for (let i = 0; i < agenda.expenses.length; i++) {
+                monthlyExpenses = monthlyExpenses + agenda.expenses[i].expenseAmount;
             };
         };
         return Math.round((monthlyIncomes - monthlyExpenses) * 100) / 100;

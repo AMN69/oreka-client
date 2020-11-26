@@ -4,6 +4,7 @@ import { withAuth } from "../lib/AuthProvider";
 import axios from 'axios';
 
 const AnonRoute = ({ component: Component, isLoggedin, ...rest }) => {
+  console.log(isLoggedin);
   return (
     <Route
       {...rest}

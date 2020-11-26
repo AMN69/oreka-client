@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 import Habits from "../components/Habits";
 import People from "../components/People";
-import Finance from "../components/Finance";
+//import Finance from "../components/Finance";
 import Skills from "../components/Skills";
 import Appointments from "../components/Appointments";
 import Places from "../components/Places";
@@ -12,6 +12,8 @@ import services from "../lib/auth-service";
 import { Link } from "react-router-dom";
 import { withAuth } from "../lib/AuthProvider";
 import axios from 'axios';
+import Incomes from "../components/Incomes";
+import Expenses from "../components/Expenses";
 
 
 class Dashboard extends Component {
@@ -43,20 +45,15 @@ class Dashboard extends Component {
         placeToVisitDesc: "",
         placeToVisitTick: false
     }],
-    finance: [
-        [
-              {
+    incomes: [{
               incomeDesc: "",
               incomeAmount: 0
-              }   
-        ],
-        [
-        {
-              expenseDesc: "",
-              expenseAmount: 0
-              }  
-        ]
-    ],
+    }],
+    expenses: [{
+      expenseDesc: "",
+      expenseAmount: 0
+    }],
+
     reward: "",
     insights: ""
     } };
@@ -101,19 +98,17 @@ class Dashboard extends Component {
                 placeToVisitDesc: "",
                 placeToVisitTick: false
             }],
-            finance: [
-                [
-                      {
-                      incomeDesc: "",
-                      incomeAmount: 0
-                      }   
-                ],
-                [
-                {
-                      expenseDesc: "",
-                      expenseAmount: 0
-                      }  
-                ]
+            incomes: [
+              {
+              incomeDesc: "",
+              incomeAmount: 0
+              }   
+            ],
+            expenses: [
+              {
+              expenseDesc: "",
+              expenseAmount: 0
+              }   
             ],
             reward: "",
             insights: ""
@@ -181,9 +176,12 @@ class Dashboard extends Component {
     return (
       
       <div>
+      
       <section>
+      
         <form onSubmit={this.handleFormCreate}>
         <div className="header1">
+        <h1>Dashboard</h1>
           <label>MONTH:</label>
           <br/>
           <input className="number" type="number" name="month" value={month} onChange={this.handleChange} />
@@ -224,21 +222,27 @@ class Dashboard extends Component {
             <div>
                 <People {...agenda}/>
             </div>
-            <div>
-                <Finance {...agenda}/>
-            </div>
+          
+            
             <div>
                 <Reward {...agenda}/>
             </div>
             <div>
                 <Insights {...agenda}/>
             </div>
+            <div>
+                <Incomes {...agenda}/>
+            </div>
+            <div>
+                <Expenses {...agenda}/>
+            </div>
       
     
       </section>
     </div>
     );
-  }
+  } 
+  
 };
 
 export default withAuth(Dashboard);
