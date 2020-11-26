@@ -172,6 +172,7 @@ class Dashboard extends Component {
     this.setState({ [name]: value });
   };
   
+  
   render() {
     const { messageAboutAgenda, month, year, agenda } = this.state;
     if (month === 0 && year === 0) {
@@ -186,6 +187,8 @@ class Dashboard extends Component {
       <div className="heading">
         <h1>Dashboard</h1>
         </div>
+      
+      
       
       <form onSubmit={this.handleFormCreate} className="header">
         

@@ -178,7 +178,7 @@ class UserProfile extends Component {
                         <br/>
                     </div>
                     <div className="imagen">
-                        <img src={userImgUrl} alt="user photo" width="125" height="150"/ >
+                        <img src={userImgUrl} alt="user photo" width="125" height="150" className="imgprofile"/ >
                         <br/>
                         <br/>
                         <input type="submit" value="UPDATE INFO" />

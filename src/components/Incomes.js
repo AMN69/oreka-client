@@ -66,7 +66,9 @@ function Incomes (agenda) {
       }}
   return (
     <div className="container">
+    <div className="heading">
       <h1>Incomes </h1>
+      </div>
       <form>
         {incomes.length &&
             incomes.map((incomes, index) => (

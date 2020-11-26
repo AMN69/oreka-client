@@ -12,10 +12,12 @@
   
 }
 
+
 nav.navbar { 
   display: flex;
   padding: 20px;
   font-size: 0.5rem;
+  
   
   font-family: "Architects Daughter", cursive; 
 }
@@ -343,4 +345,8 @@ div.financial1{
 div.user1{
   display: flex;
   flex-direction: column;
+}
+
+.imgprofile{
+  border-radius: 2rem;
 }
