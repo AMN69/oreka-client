@@ -75,6 +75,7 @@ function Skills(agenda) {
                 onChange={(e) => {
                   handleChange(e, index);
                 }}
+                checked={skill.skillDoneTick}
               />
               <input
                 key={index}

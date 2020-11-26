@@ -77,6 +77,7 @@ function Habits (agenda) {
                 onChange={(e) => {
                   handleChange(e, index);
                 }}
+                checked={habit.habitDoneTick}
               />
               <input
                 key={index}

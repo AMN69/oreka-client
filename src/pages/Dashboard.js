@@ -212,36 +212,32 @@ class Dashboard extends Component {
       <section>
       
             <div>
-                <Habits {...agenda} />
+              {agenda !== null ? <Habits {...agenda} /> : null}
             </div>
             <div>
-                <Skills {...agenda}/>
+               {agenda !== null ? <Skills {...agenda} /> : null}
             </div>
             <div>
-                <Appointments {...agenda}/>
+            {agenda !== null ? <Appointments {...agenda} /> : null}
             </div>
             <div>
-                <Places {...agenda}/>
+            {agenda !== null ? <Places {...agenda} /> : null}
             </div>
             <div>
-                <People {...agenda}/>
-            </div>
-          
-            
-            <div>
-                <Reward {...agenda}/>
+            {agenda !== null ? <People {...agenda} /> : null}
             </div>
             <div>
-                <Insights {...agenda}/>
+            {agenda !== null ? <Reward {...agenda} /> : null}
             </div>
             <div>
-                <Incomes {...agenda}/>
+            {agenda !== null ? <Insights {...agenda} /> : null}
             </div>
             <div>
-                <Expenses {...agenda}/>
+            {agenda !== null ? <Incomes {...agenda} /> : null}
             </div>
-      
-    
+            <div>
+            {agenda !== null ? <Expenses {...agenda} /> : null}
+            </div>
       </section>
     </div>
     );
