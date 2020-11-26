@@ -57,7 +57,7 @@ function Skills(agenda) {
   console.log("I'm in FormCheck children");
   console.log("with agenda: ", agenda);
   const skillsFields = null;
-    if (skills.length && skills.length < 4) { 
+    if (skills.length < 4) { 
       while (agenda.skills.length <4){
         agenda.skills.push({skillDoneTick: false, skillToDoDesc: "" })
       }}

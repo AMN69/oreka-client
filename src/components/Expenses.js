@@ -61,7 +61,7 @@ function Expenses (agenda) {
     console.log("I'm in FormCheck children");
     console.log("with agenda: ", agenda);
     const expensesFields = null;
-    if (expenses.length && expenses.length < 10) { 
+    if (expenses.length < 10) { 
       while (agenda.expenses.length <10){
         agenda.expenses.push({expenseDesc: "", expenseAmount: 0 })
       }}

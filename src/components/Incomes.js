@@ -60,7 +60,7 @@ function Incomes (agenda) {
     console.log("I'm in FormCheck children");
     console.log("with agenda: ", agenda);
     const incomesFields = null;
-    if (incomes.length && incomes.length < 4) { 
+    if (incomes.length < 4) { 
       while (agenda.incomes.length <4){
         agenda.incomes.push({incomeDesc: "", incomeAmount: 0 })
       }}

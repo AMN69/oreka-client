@@ -59,7 +59,7 @@ function Habits (agenda) {
     console.log("I'm in FormCheck children");
     console.log("with agenda: ", agenda);
     const habitsFields = null;
-    if (habits.length && habits.length < 4) { 
+    if (habits.length < 4) { 
       while (agenda.habits.length <4){
         agenda.habits.push({habitDoneTick: false, habitToDoDesc: "" })
       }}
